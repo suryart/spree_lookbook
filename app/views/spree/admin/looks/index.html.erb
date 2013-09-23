@@ -1,0 +1,14 @@
+<% content_for :page_title do %>
+  <%= @lookbook.name %> > <%= t('spree.lookbook.look.title.list') %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= button_link_to t('spree.lookbook.link.edit'), [:admin, @lookbook, @look], :icon => 'icon-arrow-left', :id => 'admin_active_sale_events_link' %>
+    <%= button_link_to t('spree.lookbook.look.link.new'), new_object_url, :icon => 'icon-plus', :id => 'admin_new_active_sale_event_link' %>
+  </li>
+<% end %>
+
+<%= render :partial => "spree/admin/shared/looks", :locals => { :looks => @looks } %>
+
+<%= render :partial => 'spree/admin/shared/lookbook_tabs', :locals => { :current => 'Looks' } %>

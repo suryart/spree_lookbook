@@ -1,0 +1,50 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  lookbooks: "Lookbooks"
+  lookbook_has_no_description: "No description available"
+  lookbook_details: "Lookbook Details"
+  looks: "Looks"
+  look_images: "Look Images"
+  spree:
+    look:
+      images:
+        link:
+          back: "Back to images"
+      product_name: "Product name"
+      product_name_hint: "Type product name to add a product to this look"
+      create_if_no_record: "You don't seem to have any look in this lookbook. Add a look?"
+      link:
+        new: "Add a new look"
+        edit: "Edit look"
+        back: "Back to looks"
+      title:
+        edit: "Edit look"
+    lookbook:
+      link:
+        new: "Add a new lookbook"
+        back: "Back to lookbook"
+        back_to_lookbooks: "Back to lookbooks"
+        edit: "Edit lookbook"
+      title:
+        edit: "Edit lookbook"
+      tooltip: "Pin a tooltip"
+      tooltip_locations:
+        save: "Save"
+        title:
+          edit: "Create or Edit Tooltip"
+        messages:
+          success: "Tooltips saved successfully."
+          error: "Tooltips couldn't be saved. Try again?"
+      activerecord:
+        name: "Name"
+        permalink: "Permalink"
+        description: "Description"
+        active: "Active"
+      look:
+        look_products:
+          link:
+            remove: "Remove"
+    lookbooks_not_found: "No lookbooks available at this moment"
+

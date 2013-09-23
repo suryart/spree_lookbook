@@ -1,0 +1,27 @@
+<% content_for :sidebar_title do %>
+  <span class="name"><%= @lookbook.name %></span>
+<% end %>
+
+<% content_for :sidebar do %>
+  <nav class="menu">
+    <ul data-hook="admin_lookbook_tabs">
+      <li<%== ' class="active"' if current == 'Lookbook Details' %>>
+        <%= link_to_with_icon 'icon-edit', t(:lookbook_details), edit_admin_lookbook_url(@lookbook) %>
+      </li>
+      <li<%== ' class="active"' if current == 'Images' %>>
+        <%= link_to_with_icon 'icon-picture', t(:images), [:admin, @lookbook, :lookbook_images] %>
+      </li>
+      <li<%== ' class="active"' if current == 'Looks' %>>
+        <%= link_to_with_icon 'icon-film', t(:looks), admin_lookbook_looks_url(@lookbook) %>
+      </li>
+      <% if @look.present? %>
+        <li<%== ' class="active"' if current == 'Look Images' %>>
+          <%= link_to_with_icon 'icon-picture', t(:look_images), [:admin, @lookbook, @look, :look_images] %>
+        </li>
+        <li<%== ' class="active"' if current == 'Look Products' %>>
+          <%= link_to_with_icon 'icon-tasks', t(:look_products), [:admin, @lookbook, @look, :look_products] %>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+<% end %>

@@ -1,0 +1,32 @@
+
+<div id="new_look_event" data-hook></div>
+
+<table class="index" id="listing_looks" data-hook>
+  <colgroup>
+    <col style="width: 70%">
+    <col style="width: 15%">
+  </colgroup>
+  <thead>
+    <tr data-hook="admin_looks_index_headers">
+      <th><%= t('spree.lookbook.look.active_record.name') %></th>
+      <th><%= t('spree.lookbook.look.active_record.is_live') %></th>
+      <th data-hook="admin_looks_index_header_actions" class="actions"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% looks.each do |look| %>
+      <tr id="<%= spree_dom_id look %>" data-hook="admin_looks_index_rows" class="<%= cycle('odd', 'even')%>">
+        <td class='look_name'><%= link_to look.name, [:admin, @lookbook, look] %></td>
+        <td class='look_is_active'><%= look.active? ? t('spree.lookbook.look.boolean.yes') : t('spree.lookbook.event.boolean.no') %></td>
+
+        <td class="actions" data-hook="admin_looks_index_row_actions">
+          <p class="actions" data-hook="actions">
+            <%= link_to_edit_url [:edit, :admin, @lookbook, look], :no_text => true %>
+            &nbsp;
+            <%= link_to_delete look, { :url => [:admin, @lookbook, look], :no_text => true } %>
+          </p>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

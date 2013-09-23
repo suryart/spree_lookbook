@@ -1,0 +1,64 @@
+<%= @lookbook.name %>
+
+<% if @looks.empty? %>
+  <%= t('spree.looks_not_found') %>
+<% else %>
+  <ul id="look" class="inline lookbook-listing" data-hook>
+    <% @looks.each do |look| %>
+      <li id="look_<%= look.id %>" class="columns three <%= cycle("alpha", "secondary", "", "omega secondary", :name => "classes") %>" data-hook="look_list_item">
+        <div class="look-image">
+          <%= link_to small_image(look, :itemprop => "image"), [@lookbook, look], :itemprop => 'url' %>
+        </div>
+        <%= link_to truncate(look.name, :length => 50), [@lookbook, look], :class => 'info', :itemprop => "name", :title => look.name %>
+      </li>
+    <% end %>
+    <% reset_cycle("classes") %>
+  </ul>
+<% end %>
+
+<div data-hook="lookbook_show">
+  <% @body_id = 'lookbook-details' %>
+
+  <div class="columns six alpha" data-hook="product_left_part">
+    <div class="row" data-hook="product_left_part_wrap">
+
+      <div id="lookbook-images" data-hook="product_images">
+        <div id="main-image" data-hook>
+          <%#= render :partial => 'image' %>
+        </div>
+        <div id="thumbnails" data-hook>
+          <%#= render :partial => 'thumbnails' %>
+        </div>
+      </div>
+
+      <div data-hook="product_properties">
+        <%#= render :partial => 'properties' %>
+      </div>
+    
+    </div>
+  </div>
+
+  <div class="columns ten omega" data-hook="product_right_part">
+    <div class="row" data-hook="product_right_part_wrap">
+
+      <div id="lookbook-description" data-hook="product_description">
+
+        <h1 class="lookbook-title" itemprop="name"><%= accurate_title %></h1>
+
+        <div itemprop="description" data-hook="description">
+          <%#= product_description(@lookbook) rescue t(:lookbook_has_no_description) %>
+        </div>
+
+        <div id="cart-form" data-hook="cart_form">
+          <%#= render :partial => 'cart_form' %>
+        </div>
+
+      </div>
+
+      <%#= render :partial => 'taxons' %>
+
+    </div>
+  </div>
+
+</div>
+

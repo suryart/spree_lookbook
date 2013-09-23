@@ -1,0 +1,74 @@
+<%= render :partial => 'spree/admin/shared/lookbook_tabs', :locals => { :current => 'Looks' } %>
+
+<% if @look.try(:errors).try(:present?) %>
+  <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @look } %>
+<% end %>
+
+<%= form_for @look, :url => (@look.new_record? ? [:admin, @lookbook, @look] : admin_lookbook_look_url(@lookbook.permalink, @look)), :html => { :id => 'admin_look', :multipart => true } do |f| %>
+  <fieldset data-hook="admin_look_form_fields"  class="no-border-top">
+
+      <div class="left four columns alpha" data-hook="admin_look_form_left">
+        <%= f.field_container :name do %>
+          <%= f.label :name, raw(t('spree.lookbook.activerecord.name') + content_tag(:span, ' *', :class => 'required')) %>
+          <%= f.text_field :name, :class => 'fullwidth' %>
+          <%= f.error_message_on :name %>
+        <% end %>
+        <%= f.field_container :permalink do %>
+          <%= f.label :permalink, raw(t('spree.lookbook.activerecord.permalink')) %>
+          <%= f.text_field :permalink, :class => 'fullwidth' %>
+        <% end %>
+        <%= f.field_container :active, :class => ['checkbox'] do %>
+          <label>
+            <%= f.check_box :active %>
+            <%= t('spree.lookbook.activerecord.active') %>
+            <%= f.error_message_on :active %>
+          </label>
+        <% end %>
+      </div>
+      <div class="right eight columns omega" data-hook="admin_lookbook_form_right">
+        <div class="row">
+          <div class="alpha columns clearfix">
+            <%= f.field_container :description do %>
+              <%= f.label :description, t('spree.lookbook.activerecord.description') %>
+              <%= f.text_area :description, {:cols => 40, :rows => 8, :class => 'fullwidth'} %>
+              <%= f.error_message_on :description %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+    <% unless @look.new_record? %>
+      <ul class="inline-menu">
+        <li><%#= link_to_with_icon('icon-plus', t(:new_image), new_admin_lookbook_look_image_url(@lookbook, @look), :id => 'new_sale_image_link', :class => 'button') %></li>
+      </ul>
+      <br/>
+      <%#= render 'spree/admin/shared/look_images' %>
+    <% end %>
+
+
+    <p class="form-buttons" data-hook="admin_lookbook_form_buttons">
+      <% if @look.new_record? %>
+        <%= render :partial => 'spree/admin/shared/new_resource_links' %>
+      <% else %>
+        <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
+      <% end %>
+    </p>
+  </fieldset>
+<% end %>
+
+<%= javascript_tag do -%>
+  var properties = "<%= raw(@properties.to_json) %>";
+
+  $("#admin_look input.autocomplete").live("keydown", function(){
+    var eventable_type = $('#look_eventable_type :selected').val();
+    var eventable_name = $('#look_eventable_name').val();
+    var url = $(this).data('auto-complete-url')
+    already_auto_completed = $(this).is('ac_input');
+    if (!already_auto_completed) {
+      $(this).autocomplete({
+        source: url+"?eventable_type="+eventable_type+"&name="+eventable_name
+      });
+      $(this).focus();
+    }
+  });
+<% end -%>

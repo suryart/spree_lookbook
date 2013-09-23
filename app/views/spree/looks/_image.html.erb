@@ -1,0 +1,30 @@
+<% if image %> 
+  <%= image_tag image.attachment.url, :itemprop => "image" %>
+<% else %>
+  <%#= looks_look_image(@look, :itemprop => "image") %>
+  <div id="iPicture" class='twelve columns'>
+    <div id="<%= @look_image.id %>" style="background: url(<%= @look_image.attachment.url %>) no-repeat scroll 0 0 #393737; width: 500px; height: 600px; margin:0 auto; background-size: cover; background-repeat: no-repeat;" class="eight columns"></div>
+  </div>
+<% end %>
+
+<%= javascript_tag do %>
+  jQuery(document).ready(function(){
+    $( "#iPicture" ).iPicture({
+      <% if @look_image.tooltip.present? %>
+        animation: "<%= @tooltip.animation.to_s %>",
+        animationBg: "<%= @tooltip.animationBg %>",
+        animationType: "<%= @tooltip.animationType %>",
+        pictures: ["<%= @look_image.id %>"],
+        button: "<%= @tooltip.button %>",
+        moreInfos:{"<%= @look_image.id %>":<%= raw(@tooltip_locations.to_json(:except => ["id", "tooltip_id", "created_at", "updated_at"], :root => false) ) %>},
+      <% else %>
+        animation: true,
+        animationBg: "bgwhite",
+        animationType: "ltr-slide",
+        pictures: ["<%= @look_image.id %>"],
+        button: "moreblack",
+        moreInfos:{"<%= @look_image.id %>":[]},
+      <% end %>
+    });
+  });
+<% end %>

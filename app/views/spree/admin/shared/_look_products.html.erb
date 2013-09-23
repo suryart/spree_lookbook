@@ -1,0 +1,42 @@
+<div id="new_look_product" data-hook></div>
+
+<% unless look_products.any? %>
+  <div class="no-objects-found">
+    <%= t('spree.lookbook.event.no_product') %>
+  </div>
+<% else %>
+  <table class="index sortable" id="listing_active_look_products" data-hook="active_look_products_table" data-sortable-link="<%= update_positions_admin_lookbook_look_look_products_url(@lookbook, @look) %>">
+    <colgroup>
+      <col style="width: 15%">
+      <col style="width: 70%">
+      <col style="width: 15%">
+      <col style="width: 25%">
+    </colgroup>
+    <thead>
+      <tr data-hook="admin_active_look_products_index_headers">
+        <th colspan="2"><%= t('spree.lookbook.products.active_record.name') %></th>
+        <th><%= t('spree.lookbook.products.active_record.price') %></th>
+        <th data-hook="admin_look_products_index_header_actions" class="actions"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% look_products.each do |look_product| %>
+        <tr id="<%= spree_dom_id look_product %>" data-hook="admin_look_products_index_rows" class="<%= cycle('odd', 'even')%>">
+          <td class="no-border">
+            <span class="handle"></span>
+          </td>
+          <td><%= link_to look_product.product_name, edit_product_url(look_product.product) %></td>
+          <td><%= look_product.product.price %></td>
+
+          <td class="actions" data-hook="admin_look_products_index_row_actions">
+            <p class="actions" data-hook="actions">
+              <%= link_to_edit_url edit_admin_product_url(look_product.product), :no_text => true %>
+              &nbsp;
+              <%= link_to_delete look_product, { :url => admin_lookbook_look_look_product_url(@lookbook.id, @look.id, look_product), :no_text => true, :name => t('spree.lookbook.look.look_products.link.remove') } %>
+            </p>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

@@ -1,0 +1,15 @@
+<% if @lookbooks.empty? %>
+  <%= t('spree.lookbooks_not_found') %>
+<% else %>
+  <ul id="lookbooks" class="inline lookbook-listing" data-hook>
+    <% @lookbooks.each do |lookbook| %>
+      <li id="lookbook_<%= lookbook.id %>" class="columns three <%= cycle("alpha", "secondary", "", "omega secondary", :name => "classes") %>" data-hook="lookbooks_list_item">
+        <div class="lookbook-image">
+          <%= link_to small_image(lookbook, :itemprop => "image"), lookbook, :itemprop => 'url' %>
+        </div>
+        <%= link_to truncate(lookbook.name, :length => 50), lookbook, :class => 'info', :itemprop => "name", :title => lookbook.name %>
+      </li>
+    <% end %>
+    <% reset_cycle("classes") %>
+  </ul>
+<% end %>

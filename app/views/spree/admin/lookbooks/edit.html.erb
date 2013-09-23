@@ -1,0 +1,19 @@
+<% content_for :page_title do %>
+  <%= t('spree.lookbook.title.edit') %> "<%= @lookbook.name %>"
+<% end %>
+
+<%= render :partial => 'spree/admin/shared/lookbook_tabs', :locals => { :current => 'Lookbook Details' } %>
+
+<% content_for :page_actions do %>
+  <li>
+    <% @look = Spree::Look.new %>
+    <%= button_link_to t('spree.lookbook.link.back_to_lookbooks'), collection_url, :icon => 'icon-arrow-left', :id => 'admin_new_lookbook_link' %>
+    <%= button_link_to t('spree.look.link.new'), new_admin_lookbook_look_url(@lookbook.permalink), :icon => 'icon-plus', :id => 'admin_lookbooks_link' %>
+  </li>
+<% end %>
+
+<div data-hook="admin_lookbook_edit_form">
+  <div id="active-sale-form-wrapper">
+    <%= render :partial => 'form' %>
+  </div>
+</div>

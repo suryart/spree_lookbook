@@ -1,0 +1,17 @@
+<% content_for :page_title do %>
+  <%= t('spree.look.title.edit') %> &#62; <%= @lookbook.name %> &#62; <%= @look.name %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= button_link_to t('spree.lookbook.link.back_to_lookbooks'), admin_lookbooks_url, :icon => 'icon-arrow-left', :id => 'admin_lookbook_events_link' %>
+    <%= button_link_to t('spree.lookbook.link.edit'), [:edit, :admin, @lookbook], :icon => 'icon-edit', :id => 'admin_lookbook_events_link' %>
+    <%= button_link_to t('spree.look.link.new'), new_object_url, :icon => 'icon-plus', :id => 'new_admin_lookbook_event_link' %>
+  </li>
+<% end %>
+
+<div data-hook="admin_lookbook_event_edit_form">
+  <div id="lookbook-look-form-wrapper">
+    <%= render :partial => 'form' %>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<% @look_product ||= Spree::LookProduct.new %>
+
+<%= form_for @look_product, :url => admin_lookbook_look_look_products_url(@lookbook, @look.id, @look_product), :html => { :multipart => true } do |f| %>
+  <fieldset data-hook="new_sale_product">
+    <legend align="center"><%= t('spree.lookbook.new_sale_product') %></legend>
+      <%= f.hidden_field :look_id, :value => @look.id %>
+      <%= f.field_container :product_id do %>
+        <%= f.label :product_name, t('spree.look.product_name', :default => :product_name) %>
+        <p class='hint'><%= t('spree.look.product_name_hint') %></p>
+        <%= f.text_field :product_id, :class => 'autocomplete fullwidth' %>
+        <%= f.error_message_on :product_id %>
+      <% end %>
+
+      <div class="form-buttons filter-actions actions" data-hook="buttons">
+        <%= button t(:add), 'icon-ok' %>
+        <span class="or"><%= t(:or) %></span>
+        <%= link_to_with_icon 'icon-remove', t(:cancel), admin_lookbook_look_look_products_url(@lookbook, @look), :id => 'cancel_link', :class => 'button' %>
+      </div>
+  </fieldset>
+<% end %>
+
+<% content_for :head do %>
+  <script>
+    Spree.lookbook_routes = <%==
+      { :product_search => search_admin_lookbooks_url(:format => :json) }.to_json
+    %>
+  </script>
+<% end %>

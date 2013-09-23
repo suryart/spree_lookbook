@@ -1,0 +1,60 @@
+<% if @lookbook.try(:errors).present? %>
+  <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @lookbook } %>
+<% end %>
+
+<%= form_for [:admin, @lookbook] do |f| %>
+
+  <fieldset data-hook="new_lookbook"  class="no-border-top">
+    <div class="clearfix">
+      <div class="left four columns alpha" data-hook="admin_lookbook_form_left">
+        <%= f.field_container :name do %>
+          <%= f.label :name, raw(t('spree.lookbook.activerecord.name') + content_tag(:span, ' *', :class => 'required')) %>
+          <%= f.text_field :name, :class => 'fullwidth' %>
+          <%= f.error_message_on :name %>
+        <% end %>
+        <%= f.field_container :permalink do %>
+          <%= f.label :permalink, raw(t('spree.lookbook.activerecord.permalink')) %>
+          <%= f.text_field :permalink, :class => 'fullwidth' %>
+          <%= f.error_message_on :permalink %>
+        <% end %>
+        <%= f.field_container :active, :class => ['checkbox'] do %>
+          <label>
+            <%= f.check_box :active %>
+            <%= t('spree.lookbook.activerecord.active') %>
+            <%= f.error_message_on :active %>
+          </label>
+        <% end %>
+      </div>
+      <div class="right eight columns omega" data-hook="admin_lookbook_form_right">
+        <%= f.field_container :description do %>
+          <%= f.label :description, t('spree.lookbook.activerecord.description') %>
+          <%= f.text_area :description, {:cols => 60, :rows => 8, :class => 'fullwidth'} %>
+          <%= f.error_message_on :description %>
+        <% end %>
+      </div>
+    </div>
+    <p class="form-buttons" data-hook="admin_lookbook_form_buttons">
+      <% if @lookbook.new_record? %>
+        <%= render :partial => 'spree/admin/shared/new_resource_links' %>
+      <% else %>
+        <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
+      <% end %>
+    </p>
+  </fieldset>
+<% end %>
+
+<% unless @lookbook.new_record? %>
+  <% if @lookbook.looks.blank? %>
+    <div class="box align-center">
+      <div class='field'>
+        <h4><%= t('spree.look.create_if_no_record') %></h4>
+      </div>
+      <p>
+        <%= button_link_to t('spree.look.link.new'), new_admin_lookbook_look_url(@lookbook.permalink), :icon => 'icon-plus', :id => 'admin_lookbooks_link' %>
+      </p>
+    </div>
+  <% else %>
+    <% @looks = @lookbook.looks %>
+    <%= render :partial => "spree/admin/shared/looks", :locals => { :looks => @looks } %>
+  <% end %>
+<% end %>
