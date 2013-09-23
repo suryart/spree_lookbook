@@ -6,10 +6,10 @@ For more information: [Lookbook](http://en.wikipedia.org/wiki/Lookbook)
 
 ----------
 
-[![Dependency Status](https://gemnasium.com/suryart/spree_loobook.png)](https://gemnasium.com/suryart/spree_loobook) 
-[![Code Climate](https://codeclimate.com/github/suryart/spree_loobook.png)](https://codeclimate.com/github/suryart/spree_loobook)
-[![Build Status](https://travis-ci.org/suryart/spree_loobook.png?branch=1-3-stable)](https://travis-ci.org/suryart/spree_loobook)
-[![Coverage Status](https://coveralls.io/repos/suryart/spree_loobook/badge.png?branch=1-3-stable)](https://coveralls.io/r/suryart/spree_loobook?branch=1-3-stable)
+[![Dependency Status](https://gemnasium.com/suryart/spree_lookbook.png)](https://gemnasium.com/suryart/spree_lookbook) 
+[![Code Climate](https://codeclimate.com/github/suryart/spree_lookbook.png)](https://codeclimate.com/github/suryart/spree_lookbook)
+[![Build Status](https://travis-ci.org/suryart/spree_lookbook.png?branch=1-3-stable)](https://travis-ci.org/suryart/spree_lookbook)
+[![Coverage Status](https://coveralls.io/repos/suryart/spree_lookbook/badge.png?branch=1-3-stable)](https://coveralls.io/r/suryart/spree_lookbook?branch=1-3-stable)
 
 ## INSTALLATION
 
@@ -17,25 +17,25 @@ For more information: [Lookbook](http://en.wikipedia.org/wiki/Lookbook)
   * Get the latest greatest from github: 
     
       ```ruby
-        gem 'spree_loobook' , :git => 'git://github.com/suryart/spree_loobook.git'
+        gem 'spree_lookbook' , :git => 'git://github.com/suryart/spree_lookbook.git'
       ```
 
   * Get the 1-3-stable branch for Spree 1.3.x from github: 
     
       ```ruby
-        gem 'spree_loobook' , :git => 'git://github.com/suryart/spree_loobook.git', :branch => '1-3-stable'
+        gem 'spree_lookbook' , :git => 'git://github.com/suryart/spree_lookbook.git', :branch => '1-3-stable'
       ```
 
   * Or get it from rubygems.org by mentioning the following line in your Gemfile:
     
       ```ruby 
-        gem 'spree_loobook', '1.3.0'
+        gem 'spree_lookbook', '1.3.0'
       ```
 
 ### Then run the following commands: 
 
     $ bundle install
-    $ rails g spree_loobook:install 
+    $ rails g spree_lookbook:install 
     $ rake db:migrate
     $ rails s 
 
@@ -57,7 +57,7 @@ When testing your applications integration with this extension you may use it's 
 Simply add this require statement to your spec_helper:
 
 ```ruby
-require 'spree_loobook/factories'
+require 'spree_lookbook/factories'
 ```
 
 
