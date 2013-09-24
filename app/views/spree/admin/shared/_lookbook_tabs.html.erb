@@ -1,25 +1,36 @@
 <% content_for :sidebar_title do %>
-  <span class="name"><%= @lookbook.name %></span>
+  <span class="name"><%= @lookbook_collection.name %></span>
 <% end %>
 
 <% content_for :sidebar do %>
   <nav class="menu">
-    <ul data-hook="admin_lookbook_tabs">
-      <li<%== ' class="active"' if current == 'Lookbook Details' %>>
-        <%= link_to_with_icon 'icon-edit', t(:lookbook_details), edit_admin_lookbook_url(@lookbook) %>
+    <ul data-hook="admin_lookbook_collection_tabs">
+      <li<%== ' class="active"' if current == 'Lookbook Collection Details' %>>
+        <%= link_to_with_icon 'icon-edit', t(:lookbook_collection_details), edit_admin_lookbook_collection_url(@lookbook_collection) %>
       </li>
       <li<%== ' class="active"' if current == 'Images' %>>
-        <%= link_to_with_icon 'icon-picture', t(:images), [:admin, @lookbook, :lookbook_images] %>
+        <%= link_to_with_icon 'icon-picture', t(:images), [:admin, @lookbook_collection, :lookbook_collection_images] %>
       </li>
-      <li<%== ' class="active"' if current == 'Looks' %>>
-        <%= link_to_with_icon 'icon-film', t(:looks), admin_lookbook_looks_url(@lookbook) %>
+      <li<%== ' class="active"' if current == 'Lookbooks' %>>
+        <%= link_to_with_icon 'icon-book', t(:lookbooks), admin_lookbook_collection_lookbooks_url(@lookbook_collection) %>
       </li>
-      <% if @look.present? %>
+      <% if @lookbook.present? && !@lookbook.new_record? %>
+        <li<%== ' class="active"' if current == 'Lookbook Details' %>>
+          <%= link_to_with_icon 'icon-edit', t(:lookbook_details), edit_admin_lookbook_collection_lookbook_url(@lookbook_collection, @lookbook) %>
+        </li>
+        <li<%== ' class="active"' if current == 'Lookbook Images' %>>
+          <%= link_to_with_icon 'icon-picture', t(:images), [:admin, @lookbook_collection, @lookbook, :lookbook_images] %>
+        </li>
+        <li<%== ' class="active"' if current == 'Looks' %>>
+          <%= link_to_with_icon 'icon-film', t(:looks), admin_lookbook_collection_lookbook_looks_url(@lookbook_collection, @lookbook) %>
+        </li>
+      <% end %>
+      <% if @look.present? && !@look.new_record? %>
         <li<%== ' class="active"' if current == 'Look Images' %>>
-          <%= link_to_with_icon 'icon-picture', t(:look_images), [:admin, @lookbook, @look, :look_images] %>
+          <%= link_to_with_icon 'icon-picture', t(:look_images), [:admin, @lookbook_collection, @lookbook, @look, :look_images] %>
         </li>
         <li<%== ' class="active"' if current == 'Look Products' %>>
-          <%= link_to_with_icon 'icon-tasks', t(:look_products), [:admin, @lookbook, @look, :look_products] %>
+          <%= link_to_with_icon 'icon-tasks', t(:look_products), [:admin, @lookbook_collection, @lookbook, @look, :look_products] %>
         </li>
       <% end %>
     </ul>

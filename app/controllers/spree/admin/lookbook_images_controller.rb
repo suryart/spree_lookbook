@@ -1,7 +1,8 @@
 module Spree
   module Admin
     class LookbookImagesController < ResourceController
-      before_filter :load_data
+      belongs_to 'spree/lookbook', :find_by => :permalink
+      # before_filter :load_data
 
       create.before :set_viewable
       update.before :set_viewable
@@ -10,11 +11,11 @@ module Spree
       private
 
         def location_after_save
-          admin_lookbook_lookbook_images_url(@lookbook)
+          admin_lookbook_collection_lookbook_lookbook_images_url(@lookbook_collection, @lookbook)
         end
 
         def load_data
-          @lookbook = Lookbook.find_by_permalink(params[:lookbook_id])
+          @lookbook = Lookbook.find_by_permalink!(params[:lookbook_id])
         end
 
         def set_viewable

@@ -21,7 +21,25 @@ en:
         back: "Back to looks"
       title:
         edit: "Edit look"
+    lookbook_collection:
+      link:
+        new: "Add a new lookbook collection"
+        back: "Back to lookbook collection"
+        back_to_lookbook_collections: "Back to lookbook collections"
+        edit: "Edit lookbook collection"
+      title:
+        list: "Listing all lookbook collections"
+        edit: "Edit lookbook collection"
+      active_record:
+        name: "Name"
+        permalink: "Permalink"
+        description: "Description"
+        active: "Active"
+      lookbooks:
+        link:
+          remove: "Remove"
     lookbook:
+      create_if_no_record: "You don't seem to have any lookbook in this collection. Add a lookbook?"
       link:
         new: "Add a new lookbook"
         back: "Back to lookbook"
@@ -37,7 +55,7 @@ en:
         messages:
           success: "Tooltips saved successfully."
           error: "Tooltips couldn't be saved. Try again?"
-      activerecord:
+      active_record:
         name: "Name"
         permalink: "Permalink"
         description: "Description"

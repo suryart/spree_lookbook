@@ -1,0 +1,17 @@
+<% content_for :page_title do %>
+  <%= t('spree.lookbook_collection.title.new') %>
+<% end %>
+
+<%= render :partial => 'spree/admin/shared/lookbook_tabs', :locals => { :current => 'Lookbook Collection Details' } %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= button_link_to t('spree.lookbook_collection.link.back'), collection_url, :icon => 'icon-arrow-left', :id => 'back_to_active_sales_link' %>
+  </li>
+<% end %>
+
+<div data-hook="admin_lookbook_collection_new_form">
+  <div id="active-sale-form-wrapper">
+    <%= render :partial => 'form' %>
+  </div>
+</div>

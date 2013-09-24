@@ -4,6 +4,7 @@ class Spree::Lookbook < ActiveRecord::Base
   has_many :looks, :class_name => Spree::Look, :dependent => :destroy
   has_many :look_products, :through => :looks, :dependent => :destroy, :order => "#{Spree::LookProduct.table_name}.position ASC"
   has_many :products, :through => :look_products, :order => "#{Spree::LookProduct.table_name}.position ASC"
+  belongs_to :collection, :class_name => Spree::LookbookCollection, :foreign_key => :lookbook_collection_id
 
   has_many :images, :as => :viewable, :class_name => Spree::LookbookImage, :dependent => :destroy, :order => 'position ASC'
   

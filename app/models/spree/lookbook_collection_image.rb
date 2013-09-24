@@ -1,5 +1,5 @@
 module Spree
-  class LookbookImage < Asset
+  class LookbookCollectionImage < Asset
     validates_attachment_presence :attachment
     validate :no_attachment_errors
 

@@ -15,6 +15,7 @@ module SpreeLookbook
       validates :permalink, :uniqueness => true
 
       scope :active, -> { where(:active => true) }
+      scope :sort_by_position, -> { order('position ASC') }
     end
 
     # Creates permalink based on Stringex's .to_url method

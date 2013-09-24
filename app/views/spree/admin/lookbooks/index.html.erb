@@ -2,6 +2,8 @@
   <%= t('spree.lookbook.title.list') %>
 <% end %>
 
+<%= render :partial => 'spree/admin/shared/lookbook_tabs', :locals => { :current => 'Lookbooks' } %>
+
 <% content_for :page_actions do %>
   <li>
     <%= button_link_to t('spree.lookbook.link.new'), new_object_url, :icon => 'icon-plus', :id => 'admin_new_lookbook_link' %>
@@ -10,48 +12,7 @@
 
 <div id="new_lookbook" data-hook></div>
 
-<table class="index" id="listing_lookbooks" data-hook>
-  <colgroup>
-    <col style="width: 85%">
-    <col style="width: 15%">
-  </colgroup>
-  <thead>
-    <tr data-hook="admin_lookbooks_index_headers">
-      <th><%= sort_link @search, :name, t('spree.lookbook.active_record.name'), {}, { :title => 'lookbooks_name_title' } %></th>
-      <th data-hook="admin_lookbooks_index_header_actions" class="actions"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @lookbooks.each do |lookbook| %>
-      <tr id="<%= spree_dom_id lookbook %>" data-hook="admin_lookbooks_index_rows" class="<%= cycle('odd', 'even')%>">
-        <td class='lookbook_name'><%= link_to lookbook.name, object_url(lookbook) %></td>
-        <td class="actions" data-hook="admin_lookbooks_index_row_actions">
-          <p class="actions" data-hook="actions">
-            <%= link_to_edit lookbook.permalink, :no_text => true %>
-            <%= link_to_delete lookbook, :no_text => true %>
-          </p>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render :partial => 'spree/admin/shared/lookbooks', :locals => { :lookbooks => @lookbooks } %>
 
 <%= paginate @lookbooks %>
 
-<% content_for :sidebar_title do %>
-  <%= t(:search) %>
-<% end %>
-
-<% content_for :sidebar do %>
-  <div class="box align-center" data-hook="admin_lookbooks_index_search">    
-    <%= search_form_for [:admin, @search] do |f| %>
-      <div class="field">
-        <%= f.label t(:name) %> <br>
-        <%= f.text_field :name_cont, :class => 'fullwidth' %>
-      </div>
-      <div data-hook="admin_lookbooks_index_search_buttons">
-        <%= button t(:search), 'icon-search' %>
-      </div>
-    <% end %>
-  </div>
-<% end %>

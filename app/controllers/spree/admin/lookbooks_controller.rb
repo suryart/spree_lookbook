@@ -1,6 +1,9 @@
 module Spree
   module Admin
     class LookbooksController < ResourceController
+      belongs_to 'spree/lookbook_collection', :find_by => :permalink
+      before_filter :load_lookbook_collection
+
       def index
         respond_with(@collection) do |format|
           format.html
@@ -24,13 +27,15 @@ module Spree
         end
 
         def location_after_save
-          spree.edit_admin_lookbook_url(@lookbook)
+          spree.edit_admin_lookbook_collection_lookbook_url(@lookbook_collection, @lookbook)
         end
 
         def collection
-          return @collection if @collection.present?
-          @search = Spree::Lookbook.includes(:looks).ransack(params[:q])
-          @collection = @search.result.page(params[:page]).per(Spree::LookbookConfig[:admin_lookbooks_per_page])
+          @collection ||= Lookbook.where(:lookbook_collection_id => parent.id).sort_by_position.page(params[:page]).per(Spree::LookbookConfig[:admin_lookbooks_per_page])
+        end
+
+        def load_lookbook_collection
+          @lookbook_collection = Spree::LookbookCollection.find_by_permalink!(params[:lookbook_collection_id])
         end
     end
   end

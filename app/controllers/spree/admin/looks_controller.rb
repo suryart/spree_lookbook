@@ -30,7 +30,7 @@ module Spree
         end
 
         def collection
-          @collection ||= Look.where(:lookbook_id => parent.id)
+          @collection ||= Look.where(:lookbook_id => parent.id).sort_by_position.page(params[:page]).per(Spree::LookbookConfig[:admin_looks_per_page])
         end
 
         def load_lookbook

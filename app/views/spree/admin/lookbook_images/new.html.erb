@@ -1,13 +1,13 @@
-<%= render :partial => 'spree/admin/shared/lookbook_tabs', :locals => { :current => 'Images' } %>
+<%= render :partial => 'spree/admin/shared/lookbook_tabs', :locals => { :current => 'Lookbook Images' } %>
 
 <% content_for :page_actions do %>
   <li>
-    <%= button_link_to t('spree.lookbook.link.back_to_lookbooks'), admin_lookbooks_url, :icon => 'icon-arrow-left', :id => 'admin_lookbooks_link' %>
-    <%= button_link_to t('spree.lookbook.link.edit'), edit_admin_lookbook_url(@lookbook), :icon => 'icon-edit', :id => 'admin_active_sales_link' %>
+    <%= button_link_to t('spree.lookbook.link.back_to_lookbook_collections'), admin_lookbook_collections_url, :icon => 'icon-arrow-left', :id => 'admin_lookbooks_link' %>
+    <%= button_link_to t('spree.lookbook.link.edit'), edit_admin_lookbook_collection_lookbook_url(@lookbook_collection, @lookbook), :icon => 'icon-edit', :id => 'admin_lookbook_collections_link' %>
   </li>
 <% end %>
 
-<%= form_for @lookbook_image, :url => [:admin, @lookbook, :lookbook_images], :html => { :multipart => true } do |f| %>
+<%= form_for @lookbook_image, :url => [:admin, @lookbook_collection, @lookbook, :lookbook_images], :html => { :multipart => true } do |f| %>
   <fieldset data-hook="new_image" >
     <legend align="center"><%= t(:new_image) %></legend>
 
@@ -16,7 +16,7 @@
       <div class="form-buttons filter-actions actions" data-hook="buttons">
         <%= button t(:save), 'icon-refresh' %>
         <span class="or"><%= t(:or) %></span>
-        <%= link_to_with_icon 'icon-remove', t(:cancel), edit_admin_lookbook_url(@lookbook), :id => 'cancel_link', :class => 'button' %>
+        <%= link_to_with_icon 'icon-remove', t(:cancel), edit_admin_lookbook_collection_lookbook_url(@lookbook_collection, @lookbook), :id => 'cancel_link', :class => 'button' %>
       </div>
   </fieldset>
 <% end %>

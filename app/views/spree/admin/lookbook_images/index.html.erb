@@ -5,7 +5,7 @@
   </li>
 <% end %>
 
-<%= render :partial => 'spree/admin/shared/lookbook_tabs', :locals => { :current => 'Images' } %>
+<%= render :partial => 'spree/admin/shared/lookbook_tabs', :locals => { :current => 'Lookbook Images' } %>
 
 <div id="images" data-hook></div>
 
@@ -40,7 +40,6 @@
           </td>
           <td><%= image.alt %></td>
           <td class="actions">
-            <%= link_to_with_icon 'icon-map-marker', I18n.t('spree.lookbook.tooltip'), tooltip_admin_lookbook_lookbook_image_url(@lookbook, image), :no_text => true  %>
             <%= link_to_edit_url [:edit, :admin, @lookbook, image], :no_text => true %>
             <%= link_to_delete image, { :url => [:admin, @lookbook, image], :no_text => true } %>
           </td>

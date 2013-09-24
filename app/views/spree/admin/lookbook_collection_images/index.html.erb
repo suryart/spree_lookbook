@@ -1,0 +1,50 @@
+<% content_for :page_actions do %>
+  <li>
+    <%= link_to_with_icon('icon-plus', t(:new_image), new_admin_lookbook_collection_lookbook_collection_image_url(@lookbook_collection), :id => 'new_lookbook_collection_image_link', :class => 'button') %>
+    <%= button_link_to t('spree.lookbook_collection.link.back'), edit_admin_lookbook_collection_url(@lookbook_collection), :icon => 'icon-arrow-left', :id => 'admin_active_sale_events_link' %>
+  </li>
+<% end %>
+
+<%= render :partial => 'spree/admin/shared/lookbook_tabs', :locals => { :current => 'Images' } %>
+
+<div id="images" data-hook></div>
+
+<% unless @lookbook_collection_images.any? %>
+  <div class="no-objects-found">
+    <%= t('spree.lookbook_collection.event.no_image') %>
+  </div>
+<% else %>
+  <table class="index sortable" data-hook="images_table" data-sortable-link="<%= update_positions_admin_lookbook_collection_lookbook_collection_images_url(@lookbook_collection) %>">
+    <colgroup>
+      <col style="width: 5%">
+      <col style="width: 10%">
+      <col style="width: 45%">
+      <col style="width: 15%">
+    </colgroup>
+    <thead>
+      <tr data-hook="images_header">
+        <th colspan="2"><%= t(:thumbnail) %></th>
+        <th><%= t(:alt_text) %></th>
+        <th class="actions"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @lookbook_collection_images.each do |image| %>
+        <tr id="<%= spree_dom_id image %>" data-hook="images_row" class="<%= cycle('odd', 'even')%>">
+          <td class="no-border">
+            <span class="handle"></span>
+          </td>
+          <td>
+            <%= link_to image_tag(image.attachment.url(:mini)), image.attachment.url(:original) %>
+          </td>
+          <td><%= image.alt %></td>
+          <td class="actions">
+            <%= link_to_edit_url [:edit, :admin, @lookbook_collection, image], :no_text => true %>
+            <%= link_to_delete image, { :url => [:admin, @lookbook_collection, image], :no_text => true } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
