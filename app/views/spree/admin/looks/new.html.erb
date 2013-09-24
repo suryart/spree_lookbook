@@ -4,7 +4,7 @@
 
 <% content_for :page_actions do %>
   <li>
-    <%= button_link_to t('spree.look.link.back'), [:admin, @lookbook, @look], :icon => 'icon-arrow-left', :id => 'admin_new_look_link' %>
+    <%= button_link_to t('spree.look.link.back'), [:admin, @lookbook_collection, @lookbook, @look], :icon => 'icon-arrow-left', :id => 'admin_new_look_link' %>
   </li>
 <% end %>
 

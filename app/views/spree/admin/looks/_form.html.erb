@@ -4,7 +4,7 @@
   <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @look } %>
 <% end %>
 
-<%= form_for @look, :url => (@look.new_record? ? [:admin, @lookbook, @look] : admin_lookbook_look_url(@lookbook.permalink, @look)), :html => { :id => 'admin_look', :multipart => true } do |f| %>
+<%= form_for @look, :url => (@look.new_record? ? [:admin, @lookbook_collection, @lookbook, @look] : admin_lookbook_collection_lookbook_look_url(@lookbook_collection, @lookbook, @look)), :html => { :id => 'admin_look', :multipart => true } do |f| %>
   <fieldset data-hook="admin_look_form_fields"  class="no-border-top">
 
       <div class="left four columns alpha" data-hook="admin_look_form_left">
@@ -55,20 +55,3 @@
     </p>
   </fieldset>
 <% end %>
-
-<%= javascript_tag do -%>
-  var properties = "<%= raw(@properties.to_json) %>";
-
-  $("#admin_look input.autocomplete").live("keydown", function(){
-    var eventable_type = $('#look_eventable_type :selected').val();
-    var eventable_name = $('#look_eventable_name').val();
-    var url = $(this).data('auto-complete-url')
-    already_auto_completed = $(this).is('ac_input');
-    if (!already_auto_completed) {
-      $(this).autocomplete({
-        source: url+"?eventable_type="+eventable_type+"&name="+eventable_name
-      });
-      $(this).focus();
-    }
-  });
-<% end -%>

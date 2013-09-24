@@ -31,7 +31,7 @@ Spree::Core::Engine.routes.draw do
 
   resources :lookbook_collections, :only => [:index, :show], :path => :collections do
     resources :lookbooks, :only => [:index, :show] do
-      resources :looks, :only => [:show]
+      resources :looks, :only => [:index, :show]
     end
   end
 end

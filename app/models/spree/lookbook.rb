@@ -6,7 +6,7 @@ class Spree::Lookbook < ActiveRecord::Base
   has_many :products, :through => :look_products, :order => "#{Spree::LookProduct.table_name}.position ASC"
   belongs_to :collection, :class_name => Spree::LookbookCollection, :foreign_key => :lookbook_collection_id
 
-  has_many :images, :as => :viewable, :class_name => Spree::LookbookImage, :dependent => :destroy, :order => 'position ASC'
+  has_many :lookbook_images, :as => :viewable, :dependent => :destroy, :order => 'position ASC'
   
   validates :permalink, :presence => true, :uniqueness => true
 

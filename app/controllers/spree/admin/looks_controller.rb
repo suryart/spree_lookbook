@@ -35,6 +35,7 @@ module Spree
 
         def load_lookbook
           @lookbook = Spree::Lookbook.find_by_permalink!(params[:lookbook_id])
+          @lookbook_collection  = @lookbook.collection
         end
 
       protected
