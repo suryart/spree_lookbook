@@ -29,7 +29,7 @@ module Spree
       private
 
         def location_after_save
-          admin_lookbook_look_look_images_url(@lookbook, @look)
+          admin_lookbook_collection_lookbook_look_look_images_url(@lookbook_collection, @lookbook, @look)
         end
 
         def add_tooltip_locations
@@ -42,8 +42,9 @@ module Spree
         end
 
         def load_data
-          @lookbook = Lookbook.find_by_permalink(params[:lookbook_id])
-          @look = Look.find_by_permalink(params[:look_id])
+          @lookbook = Lookbook.find_by_permalink!(params[:lookbook_id])
+          @lookbook_collection = @lookbook.collection
+          @look = Look.find_by_permalink!(params[:look_id])
         end
 
         def load_tooltip

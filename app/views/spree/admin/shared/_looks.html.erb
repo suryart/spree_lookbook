@@ -22,14 +22,14 @@
     <tbody>
       <% looks.each do |look| %>
         <tr id="<%= spree_dom_id look %>" data-hook="admin_looks_index_rows" class="<%= cycle('odd', 'even')%>">
-          <td class='look_name'><%= link_to look.name, [:admin, @lookbook, look] %></td>
+          <td class='look_name'><%= link_to look.name, [:admin, @lookbook_collection, @lookbook, look] %></td>
           <td class='look_is_active'><%= look.active? ? t('spree.lookbook.look.boolean.yes') : t('spree.lookbook.event.boolean.no') %></td>
 
           <td class="actions" data-hook="admin_looks_index_row_actions">
             <p class="actions" data-hook="actions">
-              <%= link_to_edit_url [:edit, :admin, @lookbook, look], :no_text => true %>
+              <%= link_to_edit_url [:edit, :admin, @lookbook_collection, @lookbook, look], :no_text => true %>
               &nbsp;
-              <%= link_to_delete look, { :url => [:admin, @lookbook, look], :no_text => true } %>
+              <%= link_to_delete look, { :url => [:admin, @lookbook_collection, @lookbook, look], :no_text => true } %>
             </p>
           </td>
         </tr>

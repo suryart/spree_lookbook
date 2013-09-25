@@ -1,8 +1,8 @@
 <% content_for :page_actions do %>
   <li>
-    <%= link_to_with_icon('icon-plus', t(:new_image), [:new, :admin, @lookbook, @look, :look_image], :id => 'new_look_image_link', :class => 'button') %>
-    <%= button_link_to t('spree.look.link.back'), [:admin, @lookbook, :looks], :icon => 'icon-arrow-left', :id => 'admin_lookbooks_link' %>
-    <%= button_link_to t('spree.look.link.edit'), [:edit, :admin, @lookbook], :icon => 'icon-edit', :id => 'admin_lookbooks_link' %>
+    <%= link_to_with_icon('icon-plus', t(:new_image), [:new, :admin, @lookbook_collection, @lookbook, @look, :look_image], :id => 'new_look_image_link', :class => 'button') %>
+    <%= button_link_to t('spree.look.link.back'), [:admin, @lookbook_collection, @lookbook, :looks], :icon => 'icon-arrow-left', :id => 'admin_lookbooks_link' %>
+    <%= button_link_to t('spree.look.link.edit'), [:edit, :admin, @lookbook_collection, @lookbook], :icon => 'icon-edit', :id => 'admin_lookbooks_link' %>
   </li>
 <% end %>
 
@@ -15,7 +15,7 @@
     <%= t('spree.lookbook.event.no_image') %>
   </div>
 <% else %>
-  <table class="index sortable" data-hook="images_table" data-sortable-link="<%= update_positions_admin_lookbook_look_look_images_url(@lookbook, @look) %>">
+  <table class="index sortable" data-hook="images_table" data-sortable-link="<%= update_positions_admin_lookbook_collection_lookbook_look_look_images_url(@lookbook_collection, @lookbook, @look) %>">
     <colgroup>
       <col style="width: 5%">
       <col style="width: 10%">
@@ -41,9 +41,9 @@
           </td>
           <td><%= image.alt %></td>
           <td class="actions">
-            <%= link_to_with_icon 'icon-map-marker', I18n.t('spree.lookbook.tooltip'), tooltip_admin_lookbook_look_look_image_url(@lookbook, @look, image), :no_text => true  %>
-            <%= link_to_edit_url [:edit, :admin, @lookbook, @look, image], :no_text => true %>
-            <%= link_to_delete image, { :url => [:admin, @lookbook, @look, image], :no_text => true } %>
+            <%= link_to_with_icon 'icon-map-marker', I18n.t('spree.lookbook.tooltip'), tooltip_admin_lookbook_collection_lookbook_look_look_image_url(@lookbook_collection, @lookbook, @look, image), :no_text => true  %>
+            <%= link_to_edit_url [:edit, :admin, @lookbook_collection, @lookbook, @look, image], :no_text => true %>
+            <%= link_to_delete image, { :url => [:admin, @lookbook_collection, @lookbook, @look, image], :no_text => true } %>
           </td>
         </tr>
       <% end %>

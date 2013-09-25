@@ -8,8 +8,18 @@
   </li>
 <% end %>
 
-<div data-hook="admin_look_edit_form">
-  <div id="look-form-wrapper">
-    <%= render :partial => 'form' %>
-  </div>
-</div>
+<% if @look.errors.present? %>
+  <%= render :partial => 'spree/shared/error_messages', :locals => { :target => @look } %>
+<% end %>
+
+<%= form_for @look, :url => [:admin, @lookbook_collection, @lookbook, :looks], :html => { :multipart => true } do |f| %>
+  <fieldset data-hook="new_look" class="no-border-top">
+    <%= render :partial => 'form', :locals => { :f => f } %>
+  
+    <div class="form-buttons filter-actions actions" data-hook="buttons">
+      <%= button t(:create), 'icon-refresh' %>
+      <span class="or"><%= t(:or) %></span>
+      <%= link_to_with_icon 'icon-remove', t(:cancel), admin_lookbook_collection_lookbook_looks_url(@lookbook_collection, @lookbook), :id => 'cancel_link', :class => 'button' %>
+    </div>
+  </fieldset>
+<% end %>

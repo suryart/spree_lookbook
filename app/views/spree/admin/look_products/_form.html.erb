@@ -1,6 +1,6 @@
 <% @look_product ||= Spree::LookProduct.new %>
 
-<%= form_for @look_product, :url => admin_lookbook_look_look_products_url(@lookbook, @look.id, @look_product), :html => { :multipart => true } do |f| %>
+<%= form_for @look_product, :url => admin_lookbook_collection_lookbook_look_look_products_url(@lookbook_collection, @lookbook, @look, @look_product), :html => { :multipart => true } do |f| %>
   <fieldset data-hook="new_sale_product">
     <legend align="center"><%= t('spree.lookbook.new_sale_product') %></legend>
       <%= f.hidden_field :look_id, :value => @look.id %>
@@ -14,7 +14,7 @@
       <div class="form-buttons filter-actions actions" data-hook="buttons">
         <%= button t(:add), 'icon-ok' %>
         <span class="or"><%= t(:or) %></span>
-        <%= link_to_with_icon 'icon-remove', t(:cancel), admin_lookbook_look_look_products_url(@lookbook, @look), :id => 'cancel_link', :class => 'button' %>
+        <%= link_to_with_icon 'icon-remove', t(:cancel), admin_lookbook_collection_lookbook_look_look_products_url(@lookbook_collection, @lookbook, @look), :id => 'cancel_link', :class => 'button' %>
       </div>
   </fieldset>
 <% end %>
@@ -22,7 +22,7 @@
 <% content_for :head do %>
   <script>
     Spree.lookbook_routes = <%==
-      { :product_search => search_admin_lookbooks_url(:format => :json) }.to_json
+      { :product_search => search_admin_lookbook_collections_url(:format => :json) }.to_json
     %>
   </script>
 <% end %>

@@ -14,7 +14,7 @@
     <%= t('spree.lookbook.event.no_image') %>
   </div>
 <% else %>
-  <table class="index sortable" data-hook="images_table" data-sortable-link="<%= update_positions_admin_lookbook_collection_lookbook_lookbook_images_url(@lookbook) %>">
+  <table class="index sortable" data-hook="images_table" data-sortable-link="<%= update_positions_admin_lookbook_collection_lookbook_lookbook_images_url(@lookbook_collection, @lookbook) %>">
     <colgroup>
       <col style="width: 5%">
       <col style="width: 10%">

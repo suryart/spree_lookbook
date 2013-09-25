@@ -26,7 +26,7 @@ module Spree
         end
 
         def location_after_save
-          edit_admin_lookbook_look_url(@lookbook.permalink, @look)
+          edit_admin_lookbook_collection_lookbook_look_url(@lookbook_collection, @lookbook, @look)
         end
 
         def collection
@@ -35,7 +35,7 @@ module Spree
 
         def load_lookbook
           @lookbook = Spree::Lookbook.find_by_permalink!(params[:lookbook_id])
-          @lookbook_collection  = @lookbook.collection
+          @lookbook_collection = @lookbook.collection
         end
 
       protected
