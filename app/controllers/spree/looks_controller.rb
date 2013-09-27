@@ -16,8 +16,8 @@ module Spree
       @look = @lookbook.looks.find_by_permalink!(params[:id])
       return unless @look && @lookbook
       @look_products = @look.look_products
-      @look_image = @look.images.first
-      @tooltip = @look_image.tooltip
+      @look_image = @look.look_images.first
+      @tooltip = @look_image.try(:tooltip)
       @tooltip_locations = @tooltip.try(:locations) || []
 
       respond_with(@look)
