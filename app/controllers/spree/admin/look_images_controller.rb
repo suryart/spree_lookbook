@@ -10,6 +10,11 @@ module Spree
 
       respond_to :html, :json
 
+      def index
+        @look_images = @look.look_images
+        respond_with(@look_images)
+      end
+
       def save_tooltip
         unless params[:tooltip].blank?
           @look_image.tooltip.present? ? @look_image.tooltip.update_attributes(params[:tooltip]) : (@look_image.tooltip = Spree::Tooltip.create(params[:tooltip]))
