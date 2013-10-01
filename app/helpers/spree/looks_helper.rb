@@ -23,10 +23,10 @@ module Spree
     def define_look_image_method(style)
       self.class.send :define_method, "#{style}_look_image" do |look, *options|
         options = options.first || {}
-        if look.images.empty?
+        if look.look_images.empty?
           image_tag "noimage/#{style}.png", options
         else
-          image = look.images.first
+          image = look.look_images.first
           options.reverse_merge! :alt => image.alt.blank? ? look.name : image.alt
           image_tag image.attachment.url(style), options
         end
