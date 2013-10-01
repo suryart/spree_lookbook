@@ -31,7 +31,7 @@ module Spree
         end
 
         def collection
-          @collection ||= Lookbook.where(:lookbook_collection_id => parent.id).sort_by_position.page(params[:page]).per(Spree::LookbookConfig[:admin_lookbooks_per_page])
+          @collection ||= Lookbook.where(:lookbook_collection_id => @lookbook_collection.id).sort_by_position.page(params[:page]).per(Spree::LookbookConfig[:admin_lookbooks_per_page])
         end
 
         def load_lookbook_collection

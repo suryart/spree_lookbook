@@ -15,8 +15,8 @@ module Spree
         end
 
         def load_data
-          @lookbook = Spree::Lookbook.find_by_permalink!(params[:lookbook_id])
-          @lookbook_collection  = @lookbook.collection
+          @lookbook_collection = LookbookCollection.find_by_permalink!(params[:lookbook_collection_id])
+          @lookbook = @lookbook_collection.lookbooks.find_by_permalink!(params[:lookbook_id])
         end
 
         def set_viewable
