@@ -24,7 +24,7 @@
     </fieldset>
 
     <fieldset data-hook="edit_tooltip_image" class="no-border-top">
-      <div id="<%= @look_image.id %>" style="background: url(<%= @look_image.attachment.url(:original) %>) no-repeat scroll 0 0 #393737; width: <%= @look_image.attachment_width %>px; height: <%= @look_image.attachment_height %>px; margin:0 auto; background-size: cover; background-repeat: no-repeat;" class="eight columns">
+      <div id="<%= @look_image.id %>" style="background: url('<%= @look_image.attachment.url(:original) %>') no-repeat scroll 0 0 #393737; width: <%= @look_image.attachment_width %>px; height: <%= @look_image.attachment_height %>px; margin:0 auto; background-size: cover; background-repeat: no-repeat;" class="eight columns">
       </div>
 
       <div class="clear"></div>
