@@ -32,7 +32,7 @@
             <p class="actions" data-hook="actions">
               <%= link_to_edit_url edit_admin_product_url(look_product.product), :no_text => true %>
               &nbsp;
-              <%= link_to_delete look_product, { :url => [:admin, @lookbook_collection, @lookbook, look_product], :no_text => true, :name => t('spree.lookbook.look.look_products.link.remove') } %>
+              <%= link_to_delete look_product, { :url => admin_lookbook_collection_lookbook_look_look_product_url(@lookbook_collection, @lookbook, @look, look_product), :no_text => true, :name => t('spree.lookbook.look.look_products.link.remove') } %>
             </p>
           </td>
         </tr>
