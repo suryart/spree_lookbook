@@ -11,26 +11,18 @@ module Spree
 
       private
 
-        # def build_resource
-        #   # load_data
-        # end
-
-        def load_resource
-          @object = Spree::LookProduct.new
-        end
-
         def location_after_save
           collection_url
         end
 
         def collection_url
-          admin_lookbook_collection_lookbook_look_look_products_url(@lookbook_collection, @lookbook, @look.permalink)
+          admin_lookbook_collection_lookbook_look_look_products_url(@lookbook_collection, @lookbook, @look)
         end
 
         def load_data
-          @lookbook = Spree::Lookbook.find_by_permalink!(params[:lookbook_id])
-          @lookbook_collection = @lookbook.collection
-          @look = Spree::Look.find_by_permalink!(params[:look_id])
+          @lookbook_collection = LookbookCollection.find_by_permalink!(params[:lookbook_collection_id])
+          @lookbook = @lookbook_collection.lookbooks.find_by_permalink!(params[:lookbook_id])
+          @look = @lookbook.looks.find_by_permalink!(params[:look_id])
         end
     end
   end

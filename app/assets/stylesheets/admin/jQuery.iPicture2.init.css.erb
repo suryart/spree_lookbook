@@ -1,0 +1,341 @@
+html{font-family: arial;}
+body{
+  color: #444;
+}
+label{font-size: 1.3em}
+ul {
+  padding: 0;
+  margin: 0;
+}
+li {
+  list-style: none;
+  z-index:1000;
+}
+.buttonsDropp{
+  border: 1px dashed #333333;
+    position: absolute;
+    top:0;
+    left:92px;
+    width: 550px;
+    display:none;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.8);
+}
+.buttonsDropp li {
+    cursor: pointer;
+    height: 36px;
+    width: 32px;
+    z-index: 1;
+}
+.drag-button {
+    cursor: pointer;
+    height: 36px;
+    width: 32px;
+    z-index: 1;
+    margin:0;
+    float: left;
+}
+.bgDropp{
+  border: 1px dashed #333333;
+    position: absolute;
+    display:none;
+    width: 210px;
+    top: 0;
+  left: 92px;
+  background: rgba(172, 141, 192, 0.8);
+}
+.bgRoundDropp{
+  border: 1px dashed #333333;
+    position: absolute;
+    display:none;
+    width: 174px;
+  height: 57px;
+    top: 0;
+  left: 92px;
+  background: rgba(172, 141, 192, 1);
+}
+.bgDropp li {
+    cursor: pointer;
+    height: 35px;
+    width: 200px;
+    z-index: 1;
+    margin: 0 3px 5px 3px;
+}
+.bgRoundDropp li {
+    cursor: pointer;
+    height: 50px;
+  width: 50px;
+    z-index: 1;
+    margin: 3px;
+    position:relative;
+    float:left;
+}
+.listContainer{
+  width:92px;
+  height: 35px;
+  border-radius: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.listContainer li{
+  cursor:move;
+  height: 32px;
+  width: 32px;
+}
+.listContainer ul{
+  float:left;
+}
+.buttonsList{
+  float:right;
+  background: url("<%= asset_path('iPicture2/choosebutton.png') %>") no-repeat scroll right center transparent;
+  height: 16px;
+  width: 16px;
+  margin: 11px 2px;
+  cursor: pointer;
+}
+.bgList{
+  height: 16px;
+  width: 16px;
+  background: url("<%= asset_path('iPicture2/color_swatch.png') %>") no-repeat scroll right center transparent;
+  margin: 11px 2px;
+  cursor: pointer;
+  float: right;
+}
+.roundList{
+  height: 16px;
+  width: 16px;
+  margin: 11px 2px;
+  cursor: pointer;
+  float: right;
+  position: relative;
+}
+.roundBgWList{
+  background: url("<%= asset_path('iPicture2/roundbuttonW.png') %>") no-repeat scroll right center #000000;
+}
+.roundBgBList{
+  background: url("<%= asset_path('iPicture2/roundbuttonB.png') %>") no-repeat scroll right center #ffffff;
+}
+.List{
+  background: url("<%= asset_path('iPicture2/cross2.png') %>") no-repeat scroll right center #000000;
+}
+.inline{
+  margin: 0;
+}
+ul.inline{
+  padding-top: 5px;
+}
+.inline li {
+    float: left;
+}
+.buttonSave{
+    display: inline-block;
+    height: 25px;
+    vertical-align: bottom;
+    width: 100%;
+    background: none repeat scroll 0 0 transparent !important;
+    margin: 3px 0 auto;
+    padding: 2px;
+}
+.buttonSave p{
+  display: inline;
+    margin: 0;
+   padding: 5px 0 0;
+    position: absolute;
+}
+.buttonSave input{
+
+}
+.imgButton{
+  width: 32px;
+  height: 32px;
+  float: left!important;
+}
+.imgButtonDrag{
+  cursor: move;
+  width: 32px;
+  height: 32px;
+  float: left!important;
+}
+.noborder{
+  border: 0;
+  border-radius: 0;
+}
+.inputDiv{
+  width:80%
+}
+.more32{
+  position:absolute;
+  width:32px;
+  height:32px;
+}
+.more32 .pDelete{
+  background: url("<%= asset_path('iPicture2/cross.png') %>") no-repeat scroll right center transparent;
+  top: -6px;
+  right: -6px;
+  height: 16px;
+  padding: 0;
+  position: relative;
+  cursor:pointer;
+  margin:0;
+}
+#textContainer{
+  width: 100%;
+  height:200px;
+}
+.ip_slide{
+  text-align: left;
+}
+#iPicture{
+  margin:0;
+}
+#progress{font-size: 13px;}
+#progress_bar {display:none; width: 30%;float: left;
+font-size: 11px;}
+#uploadFile {width: 40%;float: left;
+  width: 93px;
+  height: 28px;
+  border:none;
+  overflow:hidden;
+  cursor: pointer;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  background: url("eggplant/images/ui-bg_highlight-soft_100_dcd9de_1x100.png") repeat-x scroll 50% 50% #DCD9DE;
+    border: 1px solid #DCD9DE;
+    color: #665874;
+    font-weight: bold;
+}
+#uploadFile:hover {
+border: 1px solid #d1c5d8; background: #eae6ea url(eggplant/images/ui-bg_highlight-soft_100_eae6ea_1x100.png) 50% 50% repeat-x; font-weight: bold; color: #734d99;
+}
+
+#uploadFile p{
+  position:absolute;
+  padding: 8px 26px;
+margin: 0;
+}
+#files{
+  cursor: pointer;
+margin-left:-145px;
+opacity:0;
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+}
+.ui-progressbar .ui-progressbar-value { background-image: url(eggplant/images/pbar-ani.gif); }
+.rowContainer{display: inline-block; width: 100%;font-size: 11px;}
+.bgPar{
+  font-size: 11px;
+    font-weight: bold;
+    margin: 0;
+    padding: 3px 10px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    left:40px;
+}
+.pTurn{
+  background: url("<%= asset_path('iPicture2/icon-refresh.png') %>") no-repeat scroll right center transparent;
+  margin: 0;
+  position: absolute;
+  text-align: center;
+  top: -12px;
+  left:100px;
+  height: 32px;
+  width: 32px;
+  z-index: 1;
+}
+.pTurn:hover{
+  background: url("<%= asset_path('iPicture2/icon-refresh-hover.png') %>") no-repeat scroll right center transparent;
+}
+.bgRound{
+  font-size: 11px;
+    font-weight: bold;
+    margin: 0 0 0 40px;
+    padding: 3px 10px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+  }
+.ip_img32 .button {
+    float: left !important;
+    height: 32px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 32px;
+}
+.ip_img32.clone .roundBgW{
+  position: relative;
+    top: -25px;
+    left: -9px;
+}
+.ip_img32.clone .roundBgWIn{
+  left: -5px;
+    position: absolute;
+    top: -5px;
+}
+.ip_img32.clone .roundBgWInner{
+  left: -2px;
+    position: absolute;
+    top: -2px;
+}
+.ip_img32.clone .roundBgB{
+  position: relative;
+    top: -25px;
+    left: -9px;
+}
+.ip_img32.clone .roundBgBIn{
+  left: -5px;
+    position: absolute;
+    top: -5px;
+}
+.ip_img32.clone .roundBgBInner{
+  left: -2px;
+    position: absolute;
+    top: -2px;
+}
+.bgRoundDropp .roundBgW {
+height: 50px;
+width: 50px;
+left: 1px;
+position: absolute;
+top: 1px;
+}
+.bgRoundDropp .roundBgWIn {
+height: 42px;
+width: 42px;
+position: absolute;
+left: 5px;
+top: 5px;
+}
+.bgRoundDropp .roundBgWInner {
+height: 36px;
+width: 36px;
+position: absolute;
+left: 8px;
+top: 8px;
+}
+.bgRoundDropp .roundBgB {
+height: 50px;
+width: 50px;
+left: 1px;
+position: absolute;
+top: 1px;
+}
+.bgRoundDropp .roundBgBIn {
+height: 42px;
+width: 42px;
+position: absolute;
+left: 5px;
+top: 5px;
+}
+.bgRoundDropp .roundBgBInner {
+height: 36px;
+width: 36px;
+position: absolute;
+left: 8px;
+top: 8px;
+}

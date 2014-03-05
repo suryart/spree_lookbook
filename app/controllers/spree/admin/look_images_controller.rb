@@ -10,6 +10,11 @@ module Spree
 
       respond_to :html, :json
 
+      def index
+        @look_images = @look.look_images
+        respond_with(@look_images)
+      end
+
       def save_tooltip
         unless params[:tooltip].blank?
           @look_image.tooltip.present? ? @look_image.tooltip.update_attributes(params[:tooltip]) : (@look_image.tooltip = Spree::Tooltip.create(params[:tooltip]))
@@ -42,9 +47,9 @@ module Spree
         end
 
         def load_data
-          @lookbook = Lookbook.find_by_permalink!(params[:lookbook_id])
-          @lookbook_collection = @lookbook.collection
-          @look = Look.find_by_permalink!(params[:look_id])
+          @lookbook_collection = LookbookCollection.find_by_permalink!(params[:lookbook_collection_id])
+          @lookbook = @lookbook_collection.lookbooks.find_by_permalink!(params[:lookbook_id])
+          @look = @lookbook.looks.find_by_permalink!(params[:look_id])
         end
 
         def load_tooltip

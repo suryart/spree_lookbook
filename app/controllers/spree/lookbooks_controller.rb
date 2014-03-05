@@ -11,7 +11,8 @@ module Spree
     end
 
     def show
-      @lookbook = Spree::Lookbook.find_by_permalink!(params[:id])
+      @lookbook_collection = LookbookCollection.find_by_permalink!(params[:lookbook_collection_id])
+      @lookbook = @lookbook_collection.lookbooks.find_by_permalink!(params[:id])
       return unless @lookbook
       @looks = @lookbook.looks
 
