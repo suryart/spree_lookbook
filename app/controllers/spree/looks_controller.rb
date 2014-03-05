@@ -17,13 +17,17 @@ module Spree
       return unless @look && @lookbook
       @look_products = @look.look_products
       @look_image = @look.images.first
-      @tooltip = @look_image.tooltip
-      @tooltip_locations = @tooltip.try(:locations) || []
+      load_tooltip_locations if @look_image
 
       respond_with(@look)
     end
 
     private
+
+      def load_tooltip_locations
+        @tooltip = @look_image.tooltip
+        @tooltip_locations = @tooltip.try(:locations) || []
+      end
 
       def load_lookbook
         @lookbook = Spree::Lookbook.find_by_permalink!(params[:lookbook_id])
