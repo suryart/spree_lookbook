@@ -1,4 +1,4 @@
-//= require store/spree_core
+//= require store/spree_frontend
 
 //= require jquery-ui
 //= require spree_lookbook/jQuery.iPicture
