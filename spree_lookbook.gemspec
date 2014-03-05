@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.version     = '1.3.0'
   s.summary     = 'Spree Look Book for creating a look from a group of different products.'
   s.description = 'Spree Look Book enables you to create or edit looks(collection of products) or themes to show a style, or stylist or a clothing line, from admin interface. This gives customers/viewers ideas on how to style outfits, or to show what the latest fashions are.'
-  s.required_ruby_version = '>= 1.9.2'
+  s.required_ruby_version = '>= 1.9.3'
 
   s.author    = 'Surya Tripathi'
   s.email     = 'raj.surya19@gmail.com'
@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '~> 1.3.0'
+  s.add_dependency 'spree_core', '~> 2.0'
 
   s.add_development_dependency 'capybara', '~> 2.0.2'
   s.add_development_dependency 'coffee-rails'
